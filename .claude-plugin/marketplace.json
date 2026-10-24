@@ -1,0 +1,12 @@
+{
+  "name": "noomoo",
+  "description": "The noomoo Claude Code plugin: deterministic checks and lifecycle gates from specification to a verified pull request.",
+  "owner": { "name": "Task Force" },
+  "plugins": [
+    {
+      "name": "noomoo",
+      "source": "./plugin",
+      "description": "The noomoo development workflow for Claude Code: project status, documentation checks, task gates, setup with a preview plan and manifest-based rollback."
+    }
+  ]
+}
