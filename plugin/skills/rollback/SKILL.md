@@ -1,7 +1,6 @@
 ---
 name: rollback
 description: Roll back the noomoo installation by its manifest; shows the plan, applies on a yes.
-allowed-tools: Bash
 ---
 
 You remove the noomoo installation by its manifest and show the plan first.

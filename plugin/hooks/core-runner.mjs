@@ -53,13 +53,13 @@ export function managerOf() {
 }
 
 /**
- * Environment of the command. The first line of yarn prints a banner to stdout, and the hook's
- * stdout is read as the answer, so it runs with YARN_SILENT. Berry reads every YARN_* variable as a
+ * Whether the command needs YARN_SILENT. The first line of yarn prints a banner to stdout, and the
+ * hook's stdout is read as the answer, so it runs with YARN_SILENT. Berry reads every YARN_* variable as a
  * setting and fails on this one, so only the first line gets it: by the major of a declared yarn
  * version, else by a yarn.lock without the berry `__metadata:` block.
  */
 export function quiet() {
-  if (managerOf() !== 'yarn') return process.env;
+  if (managerOf() !== 'yarn') return false;
   let classic = true;
   try {
     const declared = String(JSON.parse(readFileSync(join(project, 'package.json'), 'utf8')).packageManager ?? '');
@@ -68,7 +68,7 @@ export function quiet() {
   } catch {
     // no manifest or lock file: the first line, as in the core
   }
-  return classic ? { ...process.env, YARN_SILENT: '1' } : process.env;
+  return classic;
 }
 
 /**
@@ -105,8 +105,10 @@ export function coreReady() {
  */
 export function runCore(args, input = '') {
   const [bin, prefix] = RUNNERS[managerOf()];
+  // The child inherits the environment of the hook; only the one variable is added to it.
+  if (quiet()) process.env.YARN_SILENT = '1';
   const res = spawnSync(bin, [...prefix, ...args], {
-    cwd: project, input, encoding: 'utf8', timeout: 20_000, shell: process.platform === 'win32', env: quiet(),
+    cwd: project, input, encoding: 'utf8', timeout: 20_000, shell: process.platform === 'win32',
   });
   return res.status === 0 ? (res.stdout ?? '').trim() : '';
 }

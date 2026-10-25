@@ -1,7 +1,8 @@
 ---
 name: start
 description: Show where the project stands and what to do next, from noomoo next; use after install.
-allowed-tools: Bash Read Write
+allowed-tools:
+  - Read
 ---
 
 You are the entry point of the project. You explain the next step that the core computes and run the step the user chooses; you never choose an action yourself and never decide the order of the work.

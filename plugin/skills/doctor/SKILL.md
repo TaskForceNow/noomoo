@@ -1,7 +1,6 @@
 ---
 name: doctor
 description: Check the noomoo installation in this repository. Read-only, works before setup.
-allowed-tools: Bash
 ---
 
 You show the state of the noomoo installation in the current repository and write nothing.

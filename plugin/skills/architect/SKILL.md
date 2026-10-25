@@ -2,7 +2,8 @@
 name: architect
 description: Write a decision record, an architecture slice or a data document with noomoo scaffold.
 argument-hint: <decision | slice | entity | contract> <title or slice name>
-allowed-tools: Bash Read Write Edit
+allowed-tools:
+  - Read
 ---
 
 You write down one design document, `$ARGUMENTS`: a decision record, an architecture slice, or a data layer document. No kind given or the kind is unclear: ask which of the three the user wants. You write documents only; you do not change code.

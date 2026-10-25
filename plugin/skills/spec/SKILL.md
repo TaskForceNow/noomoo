@@ -2,7 +2,8 @@
 name: spec
 description: Describe a new piece of work as requirement, use case, feature and task before building it.
 argument-hint: <short title of the work>
-allowed-tools: Bash Read Write Edit
+allowed-tools:
+  - Read
 ---
 
 You describe one piece of work, `$ARGUMENTS`, as four linked documents: a requirement, a use case, a feature and a task. No title given: ask for one in a few words. You write documents only; you do not change code and do not run a task.

@@ -119,6 +119,8 @@ Document templates and the review rubrics ship with the core package (`node_modu
 
 The skills run the core with the project's own package manager and never download it: `npx --no-install noomoo`, `pnpm exec noomoo`, `yarn exec -- noomoo` or `bun x --no-install noomoo`. If the package is missing, the skill asks you to install it and stops.
 
+The skills pre-approve no shell command and no file change. Claude Code asks you before each core command and each edit; from that prompt you can allow a command for the project.
+
 The plugin has two hooks:
 
 - **SessionStart** reads only `package.json` and `.noomoo/setup-manifest.json`. If the project lists noomoo but was never set up, it prints a one-line hint to run `/noomoo:setup`. It starts no process.

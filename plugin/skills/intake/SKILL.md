@@ -2,7 +2,8 @@
 name: intake
 description: Turn raw material or a forwarded message into an intake proposal for the owner.
 argument-hint: <what the material is about>
-allowed-tools: Bash Read Write Edit
+allowed-tools:
+  - Read
 ---
 
 You turn raw material into an intake proposal: the only way raw material reaches the requirements. You never approve the proposal and never edit a requirement from raw material yourself; the owner approves, and only then may requirements be written with the `spec` skill.
