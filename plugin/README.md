@@ -65,6 +65,8 @@ Document templates and the review rubrics ship with the core package (`node_modu
 
 The skills run the core with the project's own package manager and never download it: `npx --no-install noomoo`, `pnpm exec noomoo`, `yarn exec -- noomoo` or `bun x --no-install noomoo`. If the package is missing, the skill asks you to install it and stops.
 
+The skills pre-approve no shell command and no file change. Claude Code asks you before each core command and each edit; from that prompt you can allow a command for the project.
+
 The plugin has two hooks:
 
 - **SessionStart** reads only `package.json` and `.noomoo/setup-manifest.json`. If the project lists noomoo but was never set up, it prints a one-line hint to run `/noomoo:setup`. It starts no process.
@@ -86,9 +88,22 @@ The plugin itself installs nothing into Git or GitHub. When you confirm setup, t
 
 ## Install the plugin
 
-The primary channel is the Claude plugin directory, once the listing is available.
+Install the plugin in Claude Code from the marketplace in the noomoo repository on GitHub:
 
-For a pre-release or as a fallback, load the release archive for one session. Download `noomoo-plugin-<version>.zip` and `SHA256SUMS` from the same noomoo release, check the archive, then start Claude Code with it:
+```bash
+/plugin install noomoo --marketplace TaskForceNow/noomoo
+```
+
+On Claude Code older than 2.1.275, add the marketplace first:
+
+```bash
+/plugin marketplace add TaskForceNow/noomoo
+/plugin install noomoo@noomoo
+```
+
+The Claude plugin directory listing will be the second channel once it is available.
+
+As a fallback, load the release archive for one session. Download `noomoo-plugin-<version>.zip` and `SHA256SUMS` from the same noomoo release, check the archive, then start Claude Code with it:
 
 ```bash
 shasum -a 256 -c SHA256SUMS --ignore-missing

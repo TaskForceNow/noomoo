@@ -2,7 +2,8 @@
 name: report
 description: Write a report of findings or of a change made to a live system, with its evidence.
 argument-hint: <title of the report>
-allowed-tools: Bash Read Write Edit
+allowed-tools:
+  - Read
 ---
 
 You write one report, `$ARGUMENTS`: facts with the evidence behind each. No title given: ask for one in a few words. You write the report only; you do not change code and you do not write the task journal.

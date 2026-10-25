@@ -1,6 +1,6 @@
 {
   "name": "noomoo",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "The noomoo development workflow for Claude Code: project status, documentation checks, task gates, setup with a preview plan and manifest-based rollback.",
   "author": { "name": "Task Force" },
   "license": "Apache-2.0",

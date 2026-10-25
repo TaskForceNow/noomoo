@@ -1,7 +1,6 @@
 ---
 name: setup
 description: Install noomoo into this repository; shows the plan, applies on a yes.
-allowed-tools: Bash
 ---
 
 You install noomoo into the current repository and show the plan first.

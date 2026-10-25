@@ -1,7 +1,6 @@
 ---
 name: validate
 description: Check the project documentation with noomoo validate. Writes nothing.
-allowed-tools: Bash
 ---
 
 You run the documentation check of the project and fix nothing yourself. The run writes nothing into the project: it neither changes the documents and the configuration nor leaves snapshots behind.

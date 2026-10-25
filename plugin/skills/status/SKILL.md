@@ -1,7 +1,6 @@
 ---
 name: status
-description: Show the project status: guard, last check, open work, attention. Read-only.
-allowed-tools: Bash
+description: "Show the project status: guard, last check, open work, attention. Read-only."
 ---
 
 You show the project status as the core computes it and write nothing.

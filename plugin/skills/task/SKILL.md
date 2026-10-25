@@ -2,7 +2,10 @@
 name: task
 description: Carry one task from its document to a pull request through noomoo gates.
 argument-hint: <TASK-NNN>
-allowed-tools: Bash, Read, Glob, Grep, Edit, Write, Skill
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
 ---
 
 You carry exactly one task, `$ARGUMENTS` (an id such as `TASK-042`), from its task document to a pull request. No id given: ask for one. Flags and free text do not replace it.
