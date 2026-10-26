@@ -149,14 +149,14 @@ noomoo 覆盖整个交付流程，每一步都会留下一个文档或事实，�
 在 Claude Code 中从本仓库的 marketplace 安装插件：
 
 ```bash
-/plugin install noomoo --marketplace TaskForceNow/noomoo
-```
-
-如果 Claude Code 版本低于 2.1.275，请先添加 marketplace：
-
-```bash
 /plugin marketplace add TaskForceNow/noomoo
 /plugin install noomoo@noomoo
+```
+
+Claude Code 2.1.275 及以上版本可以用一条命令完成：
+
+```bash
+/plugin install noomoo --marketplace TaskForceNow/noomoo
 ```
 
 Claude 插件目录上线后，将成为第二个安装渠道。

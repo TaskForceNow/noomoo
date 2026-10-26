@@ -149,14 +149,14 @@ Le plugin lui-même n'installe rien dans Git ni dans GitHub. Lorsque vous confir
 Installez le plugin dans Claude Code depuis le marketplace de ce dépôt :
 
 ```bash
-/plugin install noomoo --marketplace TaskForceNow/noomoo
-```
-
-Avec une version de Claude Code antérieure à 2.1.275, ajoutez d'abord le marketplace :
-
-```bash
 /plugin marketplace add TaskForceNow/noomoo
 /plugin install noomoo@noomoo
+```
+
+À partir de Claude Code 2.1.275, la même chose en une seule commande :
+
+```bash
+/plugin install noomoo --marketplace TaskForceNow/noomoo
 ```
 
 L'annuaire des plugins Claude deviendra le second canal dès qu'il sera disponible.

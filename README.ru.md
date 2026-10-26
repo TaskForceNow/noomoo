@@ -149,14 +149,14 @@ noomoo покрывает весь путь поставки, и каждый ш
 Установите плагин в Claude Code из маркетплейса в этом репозитории:
 
 ```bash
-/plugin install noomoo --marketplace TaskForceNow/noomoo
-```
-
-В Claude Code старше 2.1.275 сначала добавьте маркетплейс:
-
-```bash
 /plugin marketplace add TaskForceNow/noomoo
 /plugin install noomoo@noomoo
+```
+
+В Claude Code 2.1.275 и новее то же самое одной командой:
+
+```bash
+/plugin install noomoo --marketplace TaskForceNow/noomoo
 ```
 
 Каталог плагинов Claude станет вторым каналом, когда будет доступен.
