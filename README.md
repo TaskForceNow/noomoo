@@ -1,5 +1,7 @@
 # noomoo
 
+[![license: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE) ![platforms: Windows | macOS | Linux](https://img.shields.io/badge/platforms-Windows%20%7C%20macOS%20%7C%20Linux-blue) ![languages: 8](https://img.shields.io/badge/languages-8-brightgreen) ![Claude Code: plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757)
+
 **English** · [Русский](README.ru.md) · [Deutsch](README.de.md) · [Español](README.es.md) · [Français](README.fr.md) · [Português](README.pt-BR.md) · [中文](README.zh-CN.md) · [日本語](README.ja.md)
 
 ## Don't trust the agent. Trust the system.
