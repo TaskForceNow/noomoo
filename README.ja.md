@@ -149,14 +149,14 @@ noomoo はデリバリーの流れ全体をカバーし、各ステップは次�
 このリポジトリのマーケットプレイスから、Claude Code にプラグインをインストールします:
 
 ```bash
-/plugin install noomoo --marketplace TaskForceNow/noomoo
-```
-
-Claude Code が 2.1.275 より古い場合は、先にマーケットプレイスを追加します:
-
-```bash
 /plugin marketplace add TaskForceNow/noomoo
 /plugin install noomoo@noomoo
+```
+
+Claude Code 2.1.275 以降では、同じことを 1 つのコマンドで行えます:
+
+```bash
+/plugin install noomoo --marketplace TaskForceNow/noomoo
 ```
 
 Claude のプラグインディレクトリが利用可能になれば、それが 2 つ目の経路になります。
