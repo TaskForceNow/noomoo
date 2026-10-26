@@ -1,5 +1,7 @@
 # noomoo
 
+**English** · [Русский](README.ru.md) · [Deutsch](README.de.md) · [Español](README.es.md) · [Français](README.fr.md) · [Português](README.pt-BR.md) · [中文](README.zh-CN.md) · [日本語](README.ja.md)
+
 ## Don't trust the agent. Trust the system.
 
 **noomoo is an engineering harness for agentic software development.**
