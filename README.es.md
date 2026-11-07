@@ -125,12 +125,7 @@ Los skills ejecutan el núcleo con el gestor de paquetes del proyecto y nunca lo
 
 Los skills no aprueban de antemano ningún comando de shell ni ningún cambio de archivo. Claude Code te pregunta antes de cada comando del núcleo y de cada edición; desde esa pregunta puedes permitir un comando para el proyecto.
 
-El plugin tiene dos hooks:
-
-- **SessionStart** lee solo `package.json` y `.noomoo/setup-manifest.json`. Si el proyecto incluye noomoo pero nunca se instaló, imprime una línea que sugiere ejecutar `/noomoo:setup`. No inicia ningún proceso.
-- **PostToolUse** sobre `Edit` y `Write` no hace nada hasta que se cumplen tres condiciones: el proyecto tiene `.noomoo/setup-manifest.json`, aceptaste ejecutar noomoo en este repositorio (la instalación lo registra en `~/.config/noomoo/trusted-repos.json`) y el núcleo está instalado localmente. Entonces ejecuta `noomoo claude-hook-docs` con el gestor de paquetes del proyecto, le pasa el evento de edición, espera como máximo 20 segundos y devuelve su salida a Claude como contexto.
-
-Ningún hook instala paquetes, abre conexiones de red ni registra confianza. La instalación, la confianza y la política del repositorio siguen siendo operaciones explícitas de noomoo. Para automatizaciones aprobadas explícitamente, la confianza en el proyecto también puede indicarse con `NOOMOO_TRUST_PROJECT=1`; noomoo nunca define esta variable por sí mismo.
+El plugin no tiene hooks: no ejecuta nada por su cuenta, solo las skills que tú invocas.
 
 El plugin no instala nada en Git ni en GitHub. Cuando confirmas la instalación, el núcleo puede añadir hooks de Git en `.githooks/` (`pre-commit` y `pre-push` ejecutan las comprobaciones de documentación, `commit-msg` rechaza firmas de IA). Cuando noomoo gestiona los hooks del proyecto, la instalación puede configurar `core.hooksPath` hacia el directorio de hooks gestionado por noomoo. La configuración de hooks existente gestionada por el usuario se conserva según las reglas de propiedad de la instalación. La instalación también añade el flujo de GitHub Actions `.github/workflows/noomoo.yml`. No cambia la protección de ramas, los webhooks ni los secretos en GitHub. `/noomoo:rollback` lo elimina todo.
 

@@ -125,12 +125,7 @@ noomoo 覆盖整个交付流程，每一步都会留下一个文档或事实，�
 
 技能不会预先批准任何 shell 命令或文件修改。Claude Code 会在每条核心命令和每次编辑之前询问你；你可以在该提示中为项目允许某条命令。
 
-插件有两个钩子：
-
-- **SessionStart** 只读取 `package.json` 和 `.noomoo/setup-manifest.json`。如果项目列出了 noomoo 但从未安装，它会打印一行提示，建议运行 `/noomoo:setup`。它不会启动任何进程。
-- **PostToolUse**（作用于 `Edit` 和 `Write`）在满足三个条件之前什么也不做：项目中有 `.noomoo/setup-manifest.json`；你同意在此仓库中运行 noomoo（由安装记录在 `~/.config/noomoo/trusted-repos.json` 中）；核心已在本地安装。满足后，它通过项目的包管理器运行 `noomoo claude-hook-docs`，传入编辑事件，最多等待 20 秒，并把输出作为上下文返回给 Claude。
-
-两个钩子都不会安装包、建立网络连接或记录信任。安装、信任和仓库策略始终是 noomoo 的显式操作。对于经过明确批准的自动化，也可以通过 `NOOMOO_TRUST_PROJECT=1` 提供项目信任；noomoo 自己从不设置这个变量。
+插件没有钩子：它不会自行运行任何东西，只运行你调用的技能。
 
 插件本身不会向 Git 或 GitHub 安装任何东西。当你确认安装时，核心可能会在 `.githooks/` 中添加 Git 钩子（`pre-commit` 和 `pre-push` 运行文档检查，`commit-msg` 拒绝 AI 署名）。当 noomoo 管理项目钩子时，安装可能会把 `core.hooksPath` 配置为由 noomoo 管理的钩子目录。用户自行管理的现有钩子配置会按照安装的归属规则保留。安装还会添加 GitHub Actions 工作流 `.github/workflows/noomoo.yml`。它不会更改 GitHub 上的分支保护、webhook 或密钥。`/noomoo:rollback` 会移除以上全部内容。
 
