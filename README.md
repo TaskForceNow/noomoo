@@ -125,12 +125,7 @@ The skills run the core with the project's own package manager and never downloa
 
 The skills pre-approve no shell command and no file change. Claude Code asks you before each core command and each edit; from that prompt you can allow a command for the project.
 
-The plugin has two hooks:
-
-- **SessionStart** reads only `package.json` and `.noomoo/setup-manifest.json`. If the project lists noomoo but was never set up, it prints a one-line hint to run `/noomoo:setup`. It starts no process.
-- **PostToolUse** on `Edit` and `Write` does nothing until three conditions hold: the project has `.noomoo/setup-manifest.json`, you agreed to run noomoo in this repository (recorded by setup in `~/.config/noomoo/trusted-repos.json`), and the core is installed locally. Then it runs `noomoo claude-hook-docs` through the project's package manager, passes it the edit event, waits at most 20 seconds and returns its output to Claude as context.
-
-Neither hook installs packages, opens a network connection or records trust. Setup, trust and repository policy stay explicit noomoo operations. For explicitly approved automation, project trust can also be supplied through `NOOMOO_TRUST_PROJECT=1`; noomoo never sets this variable itself.
+The plugin has no hooks: it runs nothing by itself, only the skills you call.
 
 The plugin itself installs nothing into Git or GitHub. When you confirm setup, the core can add Git hooks in `.githooks/` (`pre-commit` and `pre-push` run the documentation checks, `commit-msg` rejects AI signatures). When noomoo manages project hooks, setup may configure `core.hooksPath` for the noomoo-managed hook directory. Existing user-managed hook configuration is preserved according to setup ownership rules. Setup also adds the GitHub Actions workflow `.github/workflows/noomoo.yml`. It does not change branch protection, webhooks or secrets on GitHub. `/noomoo:rollback` removes all of it.
 

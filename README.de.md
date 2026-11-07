@@ -125,12 +125,7 @@ Die Skills starten den Kern mit dem Paketmanager des Projekts und laden ihn nie 
 
 Die Skills genehmigen vorab keinen Shell-Befehl und keine Dateiänderung. Claude Code fragt Sie vor jedem Kernbefehl und jeder Bearbeitung; über diese Abfrage können Sie einen Befehl für das Projekt erlauben.
 
-Das Plugin hat zwei Hooks:
-
-- **SessionStart** liest nur `package.json` und `.noomoo/setup-manifest.json`. Listet das Projekt noomoo, wurde aber nie eingerichtet, gibt er einen einzeiligen Hinweis aus, `/noomoo:setup` auszuführen. Er startet keinen Prozess.
-- **PostToolUse** auf `Edit` und `Write` tut nichts, bis drei Bedingungen erfüllt sind: Das Projekt hat `.noomoo/setup-manifest.json`, Sie haben zugestimmt, noomoo in diesem Repository auszuführen (vom Setup in `~/.config/noomoo/trusted-repos.json` festgehalten), und der Kern ist lokal installiert. Dann führt er `noomoo claude-hook-docs` über den Paketmanager des Projekts aus, übergibt das Bearbeitungsereignis, wartet höchstens 20 Sekunden und gibt die Ausgabe als Kontext an Claude zurück.
-
-Keiner der Hooks installiert Pakete, öffnet Netzwerkverbindungen oder hält Vertrauen fest. Setup, Vertrauen und Repository-Richtlinien bleiben explizite noomoo-Operationen. Für ausdrücklich genehmigte Automatisierung kann Projektvertrauen auch über `NOOMOO_TRUST_PROJECT=1` übergeben werden; noomoo setzt diese Variable nie selbst.
+Das Plugin hat keine Hooks: Es führt nichts von selbst aus, nur die Skills, die Sie aufrufen.
 
 Das Plugin selbst installiert nichts in Git oder GitHub. Wenn Sie das Setup bestätigen, kann der Kern Git-Hooks in `.githooks/` hinzufügen (`pre-commit` und `pre-push` führen die Dokumentationsprüfungen aus, `commit-msg` weist KI-Signaturen zurück). Verwaltet noomoo die Projekt-Hooks, kann das Setup `core.hooksPath` auf das von noomoo verwaltete Hook-Verzeichnis setzen. Eine bestehende, vom Benutzer verwaltete Hook-Konfiguration bleibt nach den Eigentumsregeln des Setups erhalten. Das Setup fügt außerdem den GitHub-Actions-Workflow `.github/workflows/noomoo.yml` hinzu. Branch-Schutz, Webhooks und Secrets auf GitHub ändert es nicht. `/noomoo:rollback` entfernt all das.
 
