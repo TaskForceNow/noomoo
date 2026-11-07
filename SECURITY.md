@@ -10,7 +10,7 @@ We will acknowledge your message, tell you whether we can reproduce the problem,
 
 ## Supported versions
 
-Security fixes go into the latest released version. Older versions are not patched; update to the latest release.
+Security fixes go into the latest released version. Older versions are not patched; update to the latest release. The current release of the plugin is 3.0.1.
 
 ## Scope
 
